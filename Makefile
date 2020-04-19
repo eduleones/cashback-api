@@ -27,17 +27,14 @@ install-linux: conf-env requirements-pip
 test: clean  ## Run the test suite
 	@pytest $(PROJECT_NAME) -x -s -vvv
 
-test-ci: clean  ## Run the test suite for circle-ci
-	@pytest $(PROJECT_NAME) -x -s -vvv --ci
+test-ci: clean  ## Run the integration and normal test suite for circle-ci
+	@pytest $(PROJECT_NAME) -x -s -vvv --ci -m "integration"
 
 test-matching: clean ## Run only tests matching pattern
 	@pytest $(PROJECT_NAME) -k $(test) -xs -s -vvv
 
 test-integration: clean  ## Run the integration test suite
 	@pytest $(PROJECT_NAME) -x -s -vvv -m "integration"
-
-test-integration-ci: clean  ## Run the integration test suite for circle-ci
-	@pytest $(PROJECT_NAME) -x -s -vvv --ci -m "integration"	
 
 coverage: clean ## Run the test coverage
 	@mkdir -p logs

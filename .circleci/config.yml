@@ -17,7 +17,6 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
           FIRST_SUPERUSER_EMAIL: test@test.com
-          BOTICARIO_BASE_URL: https://mdaqk8ek5j.execute-api.us-east-1.amazonaws.com
       - image: circleci/postgres:11.4
         environment:
           POSTGRES_USER: postgres
@@ -56,11 +55,6 @@ jobs:
           command: |
             . venv/bin/activate
             make test-ci
-      - run:
-          name: run integration test
-          command: |
-            . venv/bin/activate
-            make test-integration-ci      
       - store_artifacts:
           path: test-reports
           destination: test-reports
