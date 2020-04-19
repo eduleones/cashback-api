@@ -14,7 +14,7 @@ class TestIntegration:
         self, payload_new_order, superuser_token_headers
     ):
         # Create user
-        cpf = "565.344.343-77"
+        cpf = "341.343.000-12"
         user, _ = create_random_user(cpf=cpf)
 
         # Add order
@@ -35,7 +35,7 @@ class TestIntegration:
     @pytest.mark.integration
     def test_api_get_cashback_with_normal_user(self, payload_new_order):
         # Create user
-        cpf = "222.545.827-18"
+        cpf = "235.656.123-44"
         user, user_pass = create_random_user(cpf=cpf)
         payload_new_order["cpf"] = user.cpf
 
