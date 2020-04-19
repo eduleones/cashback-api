@@ -1,4 +1,6 @@
-# CASHBACK-API
+[![CircleCI](https://circleci.com/gh/eduleones/cashback-api.svg?style=svg)](https://circleci.com/gh/eduleones/cashback-api)
+
+# CASHBACK-API Example
 
 ## How to install
 
