@@ -27,18 +27,14 @@ install-linux: conf-env requirements-pip
 test: clean  ## Run the test suite
 	@pytest $(PROJECT_NAME) -x -s -vvv
 
-test-ci: clean  ## Run the integration and normal test suite for circle-ci
-	@pytest $(PROJECT_NAME) -x -s -vvv --ci -m "integration"
+test-ci: clean  ## Run the test suite for circle-ci
+	@pytest $(PROJECT_NAME) -x -s -vvv --ci
 
 test-matching: clean ## Run only tests matching pattern
 	@pytest $(PROJECT_NAME) -k $(test) -xs -s -vvv
 
 test-integration: clean  ## Run the integration test suite
 	@pytest $(PROJECT_NAME) -x -s -vvv -m "integration"
-
-coverage: clean ## Run the test coverage
-	@mkdir -p logs
-	@pytest $(PROJECT_NAME) -x --cov=$(PROJECT_NAME)/
 
 lint: clean  ## Run pylint linter
 	@echo ">>> Running linter..."
