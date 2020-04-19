@@ -1,0 +1,71 @@
+version: 2.1
+
+jobs:
+  code-quality-and-tests:
+    docker:
+      - image: circleci/python:3.7.3
+        environment:
+          PROJECT_NAME: Cashback-API
+          SECRET_KEY: changeme
+          TESTING: True
+          JSON_LOGS: False
+          LOG_LEVEL: INFO
+          LOG_VARS: "asctime created levelname funcName lineno name pathname process processName message"
+          DB_NAME: cashback_api
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+          DB_HOST: localhost
+          DB_PORT: 5432
+          FIRST_SUPERUSER_EMAIL: test@test.com
+          BOTICARIO_BASE_URL: https://mdaqk8ek5j.execute-api.us-east-1.amazonaws.com
+      - image: circleci/postgres:11.4
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: cashback_api
+          POSTGRES_PASSWORD: postgres
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements/development.txt" }}
+            - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements/development.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements/development.txt" }}
+
+      - run:
+          name: run lint
+          command: |
+            . venv/bin/activate
+            make lint
+      - run:
+          name: run style-check
+          command: |
+            . venv/bin/activate
+            make style-check
+      - run:
+          name: run test
+          command: |
+            . venv/bin/activate
+            make test-ci
+      - run:
+          name: run integration test
+          command: |
+            . venv/bin/activate
+            make test-integration        
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+
+workflows:
+  main:
+    jobs:
+      - code-quality-and-tests
