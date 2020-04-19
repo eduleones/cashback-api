@@ -60,6 +60,12 @@ make initial-data
 make test
 ```
 
+Integration test
+
+```
+make test-integration
+```
+
 ## API Docs
 
 You can access the API documentation by running the application server:
