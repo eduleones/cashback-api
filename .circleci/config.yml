@@ -7,7 +7,7 @@ jobs:
         environment:
           PROJECT_NAME: Cashback-API
           SECRET_KEY: changeme
-          TESTING: True
+          TESTING: False
           JSON_LOGS: False
           LOG_LEVEL: INFO
           LOG_VARS: "asctime created levelname funcName lineno name pathname process processName message"
@@ -60,7 +60,7 @@ jobs:
           name: run integration test
           command: |
             . venv/bin/activate
-            make test-integration        
+            make test-integration-ci      
       - store_artifacts:
           path: test-reports
           destination: test-reports
