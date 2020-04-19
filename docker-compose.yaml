@@ -1,0 +1,14 @@
+version: '2'
+services:
+  postgresql:
+    image: postgres:11.4
+    container_name: postgres-cashback-api
+    network_mode: bridge
+    restart: unless-stopped
+    ports:
+      - 5432:5432/tcp
+    environment:
+      - POSTGRES_USER=postgres
+      - PGPASSWORD=postgres
+      - POSTGRES_DB=cashback_api
+      - TZ=Etc/UTC

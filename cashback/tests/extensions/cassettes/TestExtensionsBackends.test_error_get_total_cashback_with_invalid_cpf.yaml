@@ -1,0 +1,41 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+      token:
+      - ZXPURQOARHiMc6Y0flhRC1LVlZQVFRnm
+    method: GET
+    uri: https://mdaqk8ek5j.execute-api.us-east-1.amazonaws.com/v1/cashback?cpf=123.456.678-99
+  response:
+    body:
+      string: "{\"statusCode\":400,\"body\":{\"message\":\"CPF do revendedor(a) est\xE1\
+        \ incorreto, utilize apenas n\xFAmeros!\"}}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '102'
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 18 Apr 2020 23:58:57 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-5e9b9441-233b10005cf052bc344ada56;Sampled=0
+      x-amz-apigw-id:
+      - LNQaNGrfIAMF6FQ=
+      x-amzn-RequestId:
+      - 85b872e3-4747-4ec3-aa5a-4c4c51b97e87
+    status:
+      code: 200
+      message: OK
+version: 1

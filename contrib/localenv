@@ -1,0 +1,23 @@
+### Base
+PROJECT_NAME=Cashback-API
+SECRET_KEY=5Wgw9s8Mac6IlBoEMVlDXYMyyQuFP7nPXMtBoqUk5OTZDv5zxVDN7vtZNe5NImp
+TESTING=False
+JSON_LOGS=False
+LOG_LEVEL=INFO
+LOG_VARS="levelname asctime msecs name funcName lineno processName process message"
+
+### Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_NAME=cashback_api
+
+### User Admin (First User)
+FIRST_SUPERUSER_EMAIL=test@test.com
+FIRST_SUPERUSER_PASSWORD=254uj44jgygs
+
+### Extensions
+# Boticario
+BOTICARIO_BASE_URL=https://mdaqk8ek5j.execute-api.us-east-1.amazonaws.com
+BOTICARIO_API_TOKEN=changeme
